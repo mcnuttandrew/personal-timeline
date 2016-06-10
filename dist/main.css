@@ -1,1 +1,27 @@
-.container{height:452px;left:calc(50% - 400px);position:absolute;top:calc(50% - 225px);width:793px}.container .tagline{bottom:110px;display:inline-block;font-size:64px;height:230px;left:-116px;line-height:57px;position:absolute;transform:rotate(270deg);width:450px}.container .tagline div{text-align:justify}.container .tagline div.special-line{letter-spacing:-6px}.container .name{display:inline-block;font-size:144px;height:200px;letter-spacing:0;line-height:100px;position:absolute;right:0;text-overflow:wrap;top:0;white-space:normal;width:634px}.container .boring-content{bottom:-8px;font-family:Palatino-Roman;font-size:14px;height:260px;left:217px;letter-spacing:1px;line-height:33px;position:absolute;text-align:justify;width:385px}.container .links{bottom:-22px;font-size:36px;letter-spacing:0;line-height:68px;position:absolute;right:0;text-align:right}.container .links .link:link{color:#555}.research-page .page-title{font-size:144px;height:452px;left:-14px;letter-spacing:0;line-height:100px;position:absolute;text-align:justify;top:-3px;transform:rotate(-90deg)}.research-page .page-title .special-justify{letter-spacing:19px}.research-page .section-title{font-family:GillSans-LightItalic;font-size:48px;letter-spacing:0;line-height:48px}.research-page .section{font-family:GillSans-LightItalic;font-size:36px;letter-spacing:0;line-height:34px}.research-page .interests-wrapper{left:100px;position:relative;text-align:justify;width:calc(100% - 100px)}.research-page .subsection-selector{bottom:0;cursor:pointer;font-family:GillSans-Light;font-size:20px;left:200px;letter-spacing:0;line-height:34px;position:relative}.research-page .subsection-selector .selected{text-decoration:underline}.research-page .page-content{bottom:0;left:200px;position:relative;top:0}.work-page .page-title{bottom:20px;font-family:GillSans-Light;font-size:144px;left:-21px;letter-spacing:0;line-height:100px;position:absolute;transform:rotate(-90deg);width:144px}.work-page .skillz-wrapper{font-family:GillSans-LightItalic;left:144px;position:absolute;top:0}.work-page .skillz-wrapper .section{line-height:30px;margin-left:50px;max-width:557px;text-align:justify}.work-page .skillz-wrapper .section-title{position:absolute;right:-72px;top:38px;transform:rotate(90deg)}.work-page .section-title{font-family:GillSans-LightItalic;font-size:48px;letter-spacing:0;line-height:40px}.work-page .section{font-family:GillSans-Light;font-size:24px;letter-spacing:0;line-height:19px}.work-page .page-content{bottom:0;left:144px;position:absolute}.work-page .page-content .section-title{left:-165px;position:absolute;top:118px;transform:rotate(-90deg)}.app{color:#555;font-family:GillSans-Light}.app a{text-decoration:none}.side-nav-links{font-size:15px;left:0;letter-spacing:0;line-height:70px;position:absolute;top:0;width:452px;z-index:1000}.side-nav-links .side-nav-link{margin-left:5px}.side-nav-links .link:link{color:#555}.thing{font-family:Palatino-Roman;font-size:12px;letter-spacing:0;line-height:14px}.thing .thing-body{left:40px;max-width:545px;position:relative}.thing .thing-header{width:594px}.thing .thing-header a{float:right;margin-right:10px}.thing .thing-header .title{float:none}
+.x.axis {
+  color: #333333;
+  font-family: GillSans-LightItalic;
+  font-size: 20px;
+  letter-spacing: 20px; }
+
+.timeline {
+  left: 10%;
+  position: absolute;
+  top: 10%; }
+
+.timeline-title {
+  bottom: 10%;
+  color: #333333;
+  font-family: GillSans;
+  font-size: 30.12px;
+  position: absolute;
+  right: 10%; }
+
+.timeline-subtitle {
+  bottom: 3%;
+  color: #333333;
+  font-family: GillSans-Light;
+  font-size: 14px;
+  position: absolute;
+  right: 3%;
+  width: 500px; }

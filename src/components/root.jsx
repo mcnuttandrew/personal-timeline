@@ -1,41 +1,18 @@
 import React from 'react';
-import AboutPage from './about-page.jsx';
-import ResearchPage from './research-page.jsx';
-import WorkPage from './work-page.jsx';
-import SideNavLinks from './side-nav-links.jsx';
+import Chart from './chart.jsx';
 
 export default React.createClass({
   displayName : 'App',
+
   render() {
-    // janky fake router
-    var content;
-    var links;
-    switch(this.props.location.hash) {
-      case '#/work':
-        links = (<SideNavLinks location={this.props.location.hash} />);
-        content = (<WorkPage />);
-        break;
-      case '#/research':
-        links = (<SideNavLinks location={this.props.location.hash} />);
-        content = (<ResearchPage />);
-        break;
-      case '#/about':
-        links = (<SideNavLinks location={this.props.location.hash} />);
-        content = (<AboutPage />);
-        break;
-      case '':
-        links = (<SideNavLinks location={this.props.location.hash} />);
-        content = (<AboutPage />);
-        break;
-      default:
-        links = (<SideNavLinks location={this.props.location.hash} />);
-        content = (<AboutPage />);
-        break;
-    }
     return (
       <div className="app">
-        {links}
-        {content}
+        <Chart
+          margin={{left: 50, right: 50, top: 50, bottom: 50}}
+          height={520}
+          width={1200} />
+        <div className="timeline-title">A TIMELINE ABOUT MY LIFE</div>
+        <div className="timeline-subtitle">What's that enscribbled on it? But won't that turn our ship into a piece of junk? Oh, yeah. Thank you. The previous tenant was a very prominent raccoon! Hey, what the-- Ow! What? Oh! There but for the grace of God. I can't make it! Go on without me!</div>  
       </div>);
   }
 });

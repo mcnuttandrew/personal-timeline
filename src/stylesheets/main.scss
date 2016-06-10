@@ -1,62 +1,31 @@
-$text-color: #555;
-@import 'about-page';
-@import 'research-page';
-@import 'work-page';
-
-
-.app {
-  color: $text-color;
-  font-family: GillSans-Light;
-
-  a {
-    text-decoration: none;
-  }
+.x.axis {
+  color: #333333;
+  font-family: GillSans-LightItalic;
+  font-size: 20px;
+  letter-spacing: 20px;
 }
 
-.side-nav-links {
-  font-size: 15px;
-  left: 0;
-  letter-spacing: 0;
-  line-height: 70px;
+.timeline {
+  left: 10%;
   position: absolute;
-  top: 0;
-  width: 452px;
-  z-index: 1000;
-
-  .side-nav-link {
-    margin-left: 5px;
-  }
-
-  .link {
-
-    &:link {
-      color: $text-color;
-    }
-  }
+  top: 10%;
 }
 
-.thing {
-  font-family: Palatino-Roman;
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: 14px;
+.timeline-title {
+  bottom: 10%;
+  color: #333333;
+  font-family: GillSans;
+  font-size: 30.12px;
+  position: absolute;
+  right: 10%;
+}
 
-  .thing-body {
-    left: 40px;
-    max-width: 545px;
-    position: relative;
-  }
-
-  .thing-header {
-    width: 594px;
-
-    a {
-      float: right;
-      margin-right: 10px;
-    }
-
-    .title {
-      float: none;
-    }
-  }
+.timeline-subtitle {
+  bottom: 3%;
+  color: #333333;
+  font-family: GillSans-Light;
+  font-size: 14px;
+  position: absolute;
+  right: 3%;
+  width: 500px;
 }
