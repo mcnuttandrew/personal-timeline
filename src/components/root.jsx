@@ -40,7 +40,7 @@ export default React.createClass({
     return (
       <div className="app">
         <Chart
-          margin={{left: 50, right: 200, top: 50, bottom: 50}}
+          margin={{left: 0, right: 200, top: 50, bottom: 50}}
           height={520}
           width={this.state.graphWidth} />
         <Numbers />

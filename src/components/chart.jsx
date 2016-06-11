@@ -25,7 +25,7 @@ export default React.createClass({
     var g = d3.select(ReactDOM.findDOMNode(this.refs['plot-container']));
 
     this.renderPlaceBoxes(g, tScale);
-    // this.renderOccupationWidths(g, tScale);
+    this.renderOccupationWidths(g, tScale, props);
     this.renderRelationships(g, tScale);
     this.renderAxis(g, tScale);
     this.renderEvents(g, tScale, plotHeight, props);
@@ -75,33 +75,87 @@ export default React.createClass({
     placeNames.exit().remove();
   },
 
-  renderOccupationWidths: function renderOccupationWidths(g, tScale) {
-    // // JOIN
-    // var occupationWidths = g.selectAll('text.occupation-widths').data(Data.occupationData);
-    // // ENTER
-    // occupationWidths.enter().append('svg:text').attr('class', 'occupation-widths')
-    //   .attr('font-family', 'HighwayGothicCondensed, Highway Gothic Condensed')
-    //   .attr('font-style', 'condensed')
-    //   .attr('text-anchor', 'start')
-    //   .attr('fill', '#333')
-    //   .attr('transform', 'translate(0,296)');
-    //
-    // // UPDATE
-    // occupationWidths.transition().duration(1000)
-    //   .style('font-size', function(d) {
-    //     return (tScale(new Date(d.end)) - tScale(new Date(d.start))) + 'px'
-    //   })
-    //   .attr('transform', function(d) {
-    //     var width = tScale(new Date(d.end)) - tScale(new Date(d.start)) / 5;
-    //     var xPos = tScale(new Date(d.start)) + 0.2 * width;
-    //     var yPos = width * 0.15 + 296;
-    //     return `translate(${xPos}, ${yPos}) rotate(90)`;
-    //   })
-    //   .text(function(d) {
-    //     return '}';
-    //   });
-    // // EXIT
-    // occupationWidths.exit().remove();
+  renderOccupationWidths: function renderOccupationWidths(g, tScale, props) {
+    // JOIN
+    const occupationWidths = g.selectAll('rect.occupation-widths').data(Data.occupationData);
+    // ENTER
+    occupationWidths.enter().append('rect').attr('class', 'occupation-widths')
+      .attr('fill', '#333')
+      .attr('stroke', 'no-stroke')
+      .attr('y', 320)
+      .attr('height', 1);
+
+    // UPDATE
+    occupationWidths.transition().duration(1000)
+      .attr('x', function(d) {
+        return tScale(new Date(d.start));
+      })
+      .attr('width', function(d) {
+        return tScale(new Date(d.end)) - tScale(new Date(d.start));
+      });
+    // EXIT
+    occupationWidths.exit().remove();
+
+    ['start', 'end'].forEach(function(key) {
+      const occupationHeights = g.selectAll(`rect.occupation-heights-${key}`).data(Data.occupationData);
+      // ENTER
+      occupationHeights.enter().append('rect').attr('class', `occupation-widths-${key}`)
+      .attr('fill', '#333')
+      .attr('stroke', 'no-stroke')
+      .attr('y', 315)
+      .attr('height', 10)
+      .attr('width', 1)
+
+      // UPDATE
+      occupationHeights.transition().duration(1000)
+      .attr('x', function(d) {
+        return tScale(new Date(d[key]));
+      });
+      // EXIT
+      occupationHeights.exit().remove();
+    })
+
+    var div = d3.select(ReactDOM.findDOMNode(this.refs.overlay));
+    // JOIN
+    var occupationContent = div.selectAll('span.occupation-content').data(Data.occupationData);
+    // ENTER
+    occupationContent.enter().append('span').attr('class', 'occupation-content')
+      .style('left', '100px').style('top', '383px');
+
+    // UPDATE
+    occupationContent.transition().duration(1000)
+      .style('left', function(d) {
+        const avg =  (tScale(new Date(d.end)) + tScale(new Date(d.start)) ) / 2;
+        return (avg - props.margin.left - 55) + 'px';
+      })
+      .text(function(d) {
+        return d.job;
+      });
+    // EXIT
+    occupationContent.exit().remove();
+
+    // JOIN
+    var occupationIcon = div.selectAll('img.occupation-icon').data(Data.occupationData.filter(function(d) {
+      return d.img;
+    }));
+    // ENTER
+    occupationIcon.enter().append('img').attr('class', 'occupation-icon')
+      .style('left', '100px').style('top', '380px');
+
+    // UPDATE
+    occupationIcon.transition().duration(1000)
+      .style('left', function(d) {
+        const avg =  (tScale(new Date(d.end)) + tScale(new Date(d.start)) ) / 2;
+        return (avg - props.margin.left - 10) + 'px';
+      })
+      .attr('src', function(d){
+        return d.img;
+      });
+      // .text(function(d) {
+      //   return d.job;
+      // });
+    // EXIT
+    occupationIcon.exit().remove();
   },
 
   renderAxis: function renderAxis(g, tScale) {

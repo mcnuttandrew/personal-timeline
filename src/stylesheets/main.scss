@@ -10,7 +10,10 @@ html,
 }
 
 .app {
-  padding-top: 10%;
+  top: 30%;
+  padding-left: 50px;
+  padding-right: 50px;
+  position: relative;
 }
 
 .x.axis {
@@ -26,9 +29,7 @@ html,
 
 .timeline,
 .label-overlay {
-  left: 5%;
   position: absolute;
-  top: 10%;
 }
 
 .timeline-title {
@@ -43,7 +44,7 @@ html,
   font-size: 14px;
   position: relative;
   text-align: justify;
-  width: 500px;
+  width: 475px;
 }
 
 .numbers-section {
@@ -77,4 +78,22 @@ html,
   position: absolute;
   text-align: center;
   width: 120px;
+}
+
+.occupation-content {
+  // background-color: rgba($white, .5);
+  color: $text-color;
+  font-family: GillSans-LightItalic;
+  font-size: 18px;
+  line-height: 17px;
+  position: absolute;
+  text-align: left;
+  // transform: rotate(90deg);
+  width: 120px;
+}
+
+.occupation-icon {
+  height: 20px;
+  position: absolute;
+  width: 20px;
 }
