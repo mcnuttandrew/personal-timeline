@@ -1,11 +1,27 @@
 $text-color: #333;
 $white: #fff;
 
+body,
+html,
+#app {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+.app {
+  padding-top: 10%;
+}
+
 .x.axis {
   color: $text-color;
   font-family: GillSans-LightItalic;
   font-size: 20px;
   letter-spacing: 20px;
+}
+
+.timeline-chart-wrapper {
+  position: relative;
 }
 
 .timeline,
@@ -16,21 +32,16 @@ $white: #fff;
 }
 
 .timeline-title {
-  bottom: 10%;
   color: $text-color;
   font-family: GillSans;
   font-size: 30.12px;
-  position: absolute;
-  right: 10%;
 }
 
 .timeline-subtitle {
-  bottom: 3%;
   color: $text-color;
   font-family: GillSans-Light;
   font-size: 14px;
-  position: absolute;
-  right: 3%;
+  position: relative;
   text-align: justify;
   width: 500px;
 }
@@ -58,7 +69,7 @@ $white: #fff;
 }
 
 .event-content {
-  background-color: rgba($white, 0.5);
+  background-color: rgba($white, .5);
   color: $text-color;
   font-family: GillSans-LightItalic;
   font-size: 18px;
