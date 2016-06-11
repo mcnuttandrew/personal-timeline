@@ -34297,7 +34297,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(
   _reactRouter.Router,
   { history: _reactRouter.browserHistory },
-  _react2.default.createElement(_reactRouter.Route, { path: '/personal-timeline', component: _root2.default })
+  _react2.default.createElement(_reactRouter.Route, { path: '/personal-timeline/', component: _root2.default })
 ), document.getElementById('app'));
 
 },{"./components/root.jsx":226,"react":220,"react-dom":54,"react-router":84}],224:[function(require,module,exports){
