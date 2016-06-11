@@ -34,11 +34,9 @@ export default {
     {text: 'Realized math was important to me after all', time: '2009-10-02', height: 10},
     {text: 'Went to the desert for the first time', time: '2012-01-08', height: 8},
     {text: 'Patted a buffalo on the head', time: '2014-07-23', height: 4.5}
-    // {text: 'Learned to ride a motorcycle', time: '2013-03-15', height: 7}
   ],
 
   numbersData: [
-    // {value: 3, title: 'motorcycles owned'},
     {value: '11', title: 'places lived'},
     {value: '30?', title: 'states visted'},
     {value: '7', title: 'countries visted'},
