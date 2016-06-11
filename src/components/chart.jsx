@@ -17,9 +17,9 @@ export default React.createClass({
   },
 
   _updateChart: function _updateChart(props) {
-    var plotWidth = 900;
+    var plotWidth = props.width - props.margin.left - props.margin.right;
     var plotHeight = props.height - props.margin.top - props.margin.bottom;
-    var timeDomain = [new Date(Data.locationData[0].START), new Date(Data.locationData[2].END)];
+    var timeDomain = [new Date(Data.locationData[0].start), new Date(Data.locationData[2].end)];
     var tScale = d3.time.scale().domain(timeDomain).range([0, plotWidth]);
 
     var g = d3.select(ReactDOM.findDOMNode(this.refs['plot-container']));
@@ -41,13 +41,13 @@ export default React.createClass({
     // UPDATE
     placeBoxes.transition().duration(1000)
       .attr('x', function(d) {
-        return tScale(new Date(d.START));
+        return tScale(new Date(d.start));
       })
       .attr('width', function(d) {
-        return tScale(new Date(d.END)) - tScale(new Date(d.START));
+        return tScale(new Date(d.end)) - tScale(new Date(d.start));
       })
       .attr('fill', function(d) {
-        return d.COLOR;
+        return d.color;
       });
     // EXIT
     placeBoxes.exit().remove();
@@ -66,10 +66,10 @@ export default React.createClass({
     // UPDATE
     placeNames.transition().duration(1000)
       .attr('x', function(d) {
-        return (tScale(new Date(d.END)) + tScale(new Date(d.START))) / 2;
+        return (tScale(new Date(d.end)) + tScale(new Date(d.start))) / 2;
       })
       .text(function(d) {
-        return d.PLACE;
+        return d.place;
       });
     // EXIT
     placeNames.exit().remove();
@@ -84,16 +84,16 @@ export default React.createClass({
       .attr('font-style', 'condensed')
       .attr('text-anchor', 'start')
       .attr('fill', '#333')
-      .attr('transform', function(d) {return 'translate(0,296)';});
+      .attr('transform', 'translate(0,296)');
 
     // UPDATE
     occupationWidths.transition().duration(1000)
       .style('font-size', function(d) {
-        return (tScale(new Date(d.END)) - tScale(new Date(d.START))) + 'px'
+        return (tScale(new Date(d.end)) - tScale(new Date(d.start))) + 'px'
       })
       .attr('transform', function(d) {
-        var width = tScale(new Date(d.END)) - tScale(new Date(d.START)) / 5;
-        var xPos = tScale(new Date(d.START)) + 0.2 * width;
+        var width = tScale(new Date(d.end)) - tScale(new Date(d.start)) / 5;
+        var xPos = tScale(new Date(d.start)) + 0.2 * width;
         var yPos = width * 0.15 + 296;
         return `translate(${xPos}, ${yPos}) rotate(90)`;
       })
@@ -134,16 +134,33 @@ export default React.createClass({
     // UPDATE
     relationshipBoxes.transition().duration(1000)
       .attr('x', function(d) {
-        return tScale(new Date(d.START));
+        return tScale(new Date(d.start));
       })
       .attr('y', function(d) {
-        return 270 - d.OFFSET * 5;
+        return 270 - d.offset * 5;
       })
       .attr('width', function(d) {
-        return tScale(new Date(d.END)) - tScale(new Date(d.START));
+        return tScale(new Date(d.end)) - tScale(new Date(d.start));
       });
     // EXIT
     relationshipBoxes.exit().remove();
+
+    // JOIN
+    var relationshipTitle = g.selectAll('text.relationships-title').data(['{relationships by length}']);
+    // ENTER
+    relationshipTitle.enter().append('svg:text').attr('class', 'relationships-title')
+      .attr('x', 0).attr('y', 296);
+
+    // UPDATE
+    relationshipTitle.transition().duration(1000)
+      .attr('x', function(d) {
+        return tScale(tScale.domain()[1]);
+      })
+      .text(function(d) {
+        return d;
+      });
+    // EXIT
+    relationshipTitle.exit().remove();
   },
 
   renderEvents: function renderEvents(g, tScale, plotHeight) {
@@ -165,13 +182,13 @@ export default React.createClass({
     // UPDATE
     eventContent.transition().duration(1000)
       .attr('x', function(d) {
-        return tScale(new Date(d.TIME));
+        return tScale(new Date(d.time));
       })
       .attr('y', function(d) {
-        return yScale(d.HEIGHT);
+        return yScale(d.height);
       })
       .text(function(d) {
-        return d.TEXT;
+        return d.text;
       });
     // EXIT
     eventContent.exit().remove();
@@ -188,13 +205,13 @@ export default React.createClass({
     // UPDATE
     eventLines.transition().duration(1000)
       .attr('x1', function(d) {
-        return tScale(new Date(d.TIME)) + 5;
+        return tScale(new Date(d.time)) + 5;
       })
       .attr('x2', function(d) {
-        return tScale(new Date(d.TIME)) + 5;
+        return tScale(new Date(d.time)) + 5;
       })
       .attr('y2', function(d) {
-        return yScale(d.HEIGHT);
+        return yScale(d.height);
       });
     // EXIT
     eventLines.exit().remove();

@@ -6,7 +6,7 @@
 }
 
 .timeline {
-  left: 10%;
+  left: 5%;
   position: absolute;
   top: 10%;
 }
@@ -28,4 +28,26 @@
   position: absolute;
   right: 3%;
   width: 500px;
+}
+
+.numbers-section {
+  float: right;
+}
+
+.number-value {
+  color: #333333;
+  font-family: GillSans;
+  font-size: 40px;
+}
+
+.number-title {
+  color: #333333;
+  font-family: GillSans-Light;
+  font-size: 20px;
+}
+
+.relationships-title {
+  fill: #333333;
+  font-family: GillSans-LightItalic;
+  font-size: 20px;
 }
