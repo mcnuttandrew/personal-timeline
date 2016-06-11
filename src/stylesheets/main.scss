@@ -1,11 +1,15 @@
+$text-color: #333;
+$white: #fff;
+
 .x.axis {
-  color: #333333;
+  color: $text-color;
   font-family: GillSans-LightItalic;
   font-size: 20px;
   letter-spacing: 20px;
 }
 
-.timeline {
+.timeline,
+.label-overlay {
   left: 5%;
   position: absolute;
   top: 10%;
@@ -13,7 +17,7 @@
 
 .timeline-title {
   bottom: 10%;
-  color: #333333;
+  color: $text-color;
   font-family: GillSans;
   font-size: 30.12px;
   position: absolute;
@@ -22,11 +26,12 @@
 
 .timeline-subtitle {
   bottom: 3%;
-  color: #333333;
+  color: $text-color;
   font-family: GillSans-Light;
   font-size: 14px;
   position: absolute;
   right: 3%;
+  text-align: justify;
   width: 500px;
 }
 
@@ -35,19 +40,30 @@
 }
 
 .number-value {
-  color: #333333;
+  color: $text-color;
   font-family: GillSans;
   font-size: 40px;
 }
 
 .number-title {
-  color: #333333;
+  color: $text-color;
   font-family: GillSans-Light;
   font-size: 20px;
 }
 
 .relationships-title {
-  fill: #333333;
+  fill: $text-color;
   font-family: GillSans-LightItalic;
   font-size: 20px;
+}
+
+.event-content {
+  background-color: rgba($white, 0.5);
+  color: $text-color;
+  font-family: GillSans-LightItalic;
+  font-size: 18px;
+  line-height: 17px;
+  position: absolute;
+  text-align: center;
+  width: 120px;
 }

@@ -28,7 +28,7 @@ export default React.createClass({
     // this.renderOccupationWidths(g, tScale);
     this.renderRelationships(g, tScale);
     this.renderAxis(g, tScale);
-    this.renderEvents(g, tScale, plotHeight);
+    this.renderEvents(g, tScale, plotHeight, props);
   },
 
   renderPlaceBoxes: function renderPlaceBoxes(g, tScale) {
@@ -76,32 +76,32 @@ export default React.createClass({
   },
 
   renderOccupationWidths: function renderOccupationWidths(g, tScale) {
-    // JOIN
-    var occupationWidths = g.selectAll('text.occupation-widths').data(Data.occupationData);
-    // ENTER
-    occupationWidths.enter().append('svg:text').attr('class', 'occupation-widths')
-      .attr('font-family', 'HighwayGothicCondensed, Highway Gothic Condensed')
-      .attr('font-style', 'condensed')
-      .attr('text-anchor', 'start')
-      .attr('fill', '#333')
-      .attr('transform', 'translate(0,296)');
-
-    // UPDATE
-    occupationWidths.transition().duration(1000)
-      .style('font-size', function(d) {
-        return (tScale(new Date(d.end)) - tScale(new Date(d.start))) + 'px'
-      })
-      .attr('transform', function(d) {
-        var width = tScale(new Date(d.end)) - tScale(new Date(d.start)) / 5;
-        var xPos = tScale(new Date(d.start)) + 0.2 * width;
-        var yPos = width * 0.15 + 296;
-        return `translate(${xPos}, ${yPos}) rotate(90)`;
-      })
-      .text(function(d) {
-        return '}';
-      });
-    // EXIT
-    occupationWidths.exit().remove();
+    // // JOIN
+    // var occupationWidths = g.selectAll('text.occupation-widths').data(Data.occupationData);
+    // // ENTER
+    // occupationWidths.enter().append('svg:text').attr('class', 'occupation-widths')
+    //   .attr('font-family', 'HighwayGothicCondensed, Highway Gothic Condensed')
+    //   .attr('font-style', 'condensed')
+    //   .attr('text-anchor', 'start')
+    //   .attr('fill', '#333')
+    //   .attr('transform', 'translate(0,296)');
+    //
+    // // UPDATE
+    // occupationWidths.transition().duration(1000)
+    //   .style('font-size', function(d) {
+    //     return (tScale(new Date(d.end)) - tScale(new Date(d.start))) + 'px'
+    //   })
+    //   .attr('transform', function(d) {
+    //     var width = tScale(new Date(d.end)) - tScale(new Date(d.start)) / 5;
+    //     var xPos = tScale(new Date(d.start)) + 0.2 * width;
+    //     var yPos = width * 0.15 + 296;
+    //     return `translate(${xPos}, ${yPos}) rotate(90)`;
+    //   })
+    //   .text(function(d) {
+    //     return '}';
+    //   });
+    // // EXIT
+    // occupationWidths.exit().remove();
   },
 
   renderAxis: function renderAxis(g, tScale) {
@@ -149,7 +149,7 @@ export default React.createClass({
     var relationshipTitle = g.selectAll('text.relationships-title').data(['{relationships by length}']);
     // ENTER
     relationshipTitle.enter().append('svg:text').attr('class', 'relationships-title')
-      .attr('x', 0).attr('y', 296);
+      .attr('x', 0).attr('y', 280);
 
     // UPDATE
     relationshipTitle.transition().duration(1000)
@@ -163,29 +163,22 @@ export default React.createClass({
     relationshipTitle.exit().remove();
   },
 
-  renderEvents: function renderEvents(g, tScale, plotHeight) {
+  renderEvents: function renderEvents(g, tScale, plotHeight, props) {
     var yScale = d3.scale.linear().domain([0, 10]).range([plotHeight, 0]);
+    var div = d3.select(ReactDOM.findDOMNode(this.refs.overlay));
     // JOIN
-    var eventContent = g.selectAll('text.event-content').data(Data.eventsData);
+    var eventContent = div.selectAll('span.event-content').data(Data.eventsData);
     // ENTER
-    eventContent.enter().append('svg:text').attr('class', 'event-content')
-      .attr('font-family', 'GillSans-LightItalic, Gill Sans')
-      .attr('font-size', 18)
-      .attr('font-style', 'condensed')
-      .attr('text-anchor', 'middle')
-      .attr('line-spacing', 17)
-      .attr('font-weight', 300)
-      .attr('fill', '#333')
-      .attr('width', '60')
-      .attr('x', 0).attr('y', 296);
+    eventContent.enter().append('span').attr('class', 'event-content')
+      .style('left', '0px').style('top', '296px');
 
     // UPDATE
     eventContent.transition().duration(1000)
-      .attr('x', function(d) {
-        return tScale(new Date(d.time));
+      .style('left', function(d) {
+        return (tScale(new Date(d.time)) + props.margin.left - 60) + 'px';
       })
-      .attr('y', function(d) {
-        return yScale(d.height);
+      .style('top', function(d) {
+        return (yScale(d.height) + props.margin.top - 18 * d.text.length / 16 - 10) + 'px';
       })
       .text(function(d) {
         return d.text;
@@ -231,6 +224,7 @@ export default React.createClass({
               transform={'translate(0, ' + this.props.margin.top + ')'}></g>
           </g>
         </svg>
+        <div className='label-overlay' ref='overlay'></div>
       </div>);
   }
 });

@@ -45,7 +45,7 @@ export default React.createClass({
           width={this.state.graphWidth} />
         <Numbers />
         <div className="timeline-title">A TIMELINE ABOUT MY LIFE</div>
-        <div className="timeline-subtitle">What's that enscribbled on it? But won't that turn our ship into a piece of junk? Oh, yeah. Thank you. The previous tenant was a very prominent raccoon! Hey, what the-- Ow! What? Oh! There but for the grace of God. I can't make it! Go on without me!</div>
+        <div className="timeline-subtitle">It's the time of year when I usually rewrite my resume, and as I was doing so I found myself pretty alienated from the person that document described. To confront this feeling I decided to construct a portrait of my life that I feel represents it better.</div>
       </div>);
   }
 });

@@ -25,12 +25,15 @@ export default {
   eventsData: [
     {text: 'Born', time: '1991-09-27', height: 7},
     {text: 'Broke my arm', time: '1994-09-22', height: 5},
-    {text: 'Saw my first concert (modest mouse)', time: '1999-09-02', height: 5.5},
+    {text: 'Caught a fish', time: '1997-08-10', height: 8},
+    {text: 'Learned to read by playing pokemon', time: '1999-09-10', height: 4.5},
+    // {text: 'Saw my first concert (modest mouse)', time: '1999-09-02', height: 8},
     {text: 'Learned to program a TI83', time: '2005-09-030', height: 7.5},
-    {text: 'Quit trying to be good at chess', time: '2005-04-10', height: 8},
+    {text: 'Quit trying to be good at chess', time: '2005-04-10', height: 10},
     {text: 'Found a pair \n of sunglasses in rural China', time: '2007-04-22', height: 5.5},
     {text: 'Realized math was important to me after all', time: '2009-10-02', height: 10},
-    {text: 'Went to the desert for the first time', time: '2012-01-08', height: 8}
+    {text: 'Went to the desert for the first time', time: '2012-01-08', height: 8},
+    {text: 'Patted a buffalo on the head', time: '2014-07-23', height: 4.5}
     // {text: 'Learned to ride a motorcycle', time: '2013-03-15', height: 7}
   ],
 
