@@ -6,6 +6,6 @@ import Root from './components/root.jsx';
 
 ReactDOM.render((
   <Router history={browserHistory}>
-    <Route path="/personal-timeline" component={Root}></Route>
+    <Route path="/personal-timeline/" component={Root}></Route>
   </Router>
 ),  document.getElementById('app'))
