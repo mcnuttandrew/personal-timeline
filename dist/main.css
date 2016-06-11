@@ -1,1 +1,57 @@
-.x.axis{color:#333;font-family:GillSans-LightItalic;font-size:20px;letter-spacing:20px}.timeline,.label-overlay{left:5%;position:absolute;top:10%}.timeline-title{bottom:10%;color:#333;font-family:GillSans;font-size:30.12px;position:absolute;right:10%}.timeline-subtitle{bottom:3%;color:#333;font-family:GillSans-Light;font-size:14px;position:absolute;right:3%;text-align:justify;width:500px}.numbers-section{float:right}.number-value{color:#333;font-family:GillSans;font-size:40px}.number-title{color:#333;font-family:GillSans-Light;font-size:20px}.relationships-title{fill:#333;font-family:GillSans-LightItalic;font-size:20px}.event-content{background-color:rgba(255,255,255,0.5);color:#333;font-family:GillSans-LightItalic;font-size:18px;line-height:17px;position:absolute;text-align:center;width:120px}
+.x.axis {
+  color: #333;
+  font-family: GillSans-LightItalic;
+  font-size: 20px;
+  letter-spacing: 20px; }
+
+.timeline,
+.label-overlay {
+  left: 5%;
+  position: absolute;
+  top: 10%; }
+
+.timeline-title {
+  bottom: 10%;
+  color: #333;
+  font-family: GillSans;
+  font-size: 30.12px;
+  position: absolute;
+  right: 10%; }
+
+.timeline-subtitle {
+  bottom: 3%;
+  color: #333;
+  font-family: GillSans-Light;
+  font-size: 14px;
+  position: absolute;
+  right: 3%;
+  text-align: justify;
+  width: 500px; }
+
+.numbers-section {
+  float: right; }
+
+.number-value {
+  color: #333;
+  font-family: GillSans;
+  font-size: 40px; }
+
+.number-title {
+  color: #333;
+  font-family: GillSans-Light;
+  font-size: 20px; }
+
+.relationships-title {
+  fill: #333;
+  font-family: GillSans-LightItalic;
+  font-size: 20px; }
+
+.event-content {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #333;
+  font-family: GillSans-LightItalic;
+  font-size: 18px;
+  line-height: 17px;
+  position: absolute;
+  text-align: center;
+  width: 120px; }
