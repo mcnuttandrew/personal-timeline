@@ -4,6 +4,8 @@ import d3 from 'd3';
 
 import Data from '../constants';
 
+const DURATION = 1000;
+
 export default React.createClass({
   displayName : 'Chart',
 
@@ -39,7 +41,7 @@ export default React.createClass({
       .attr('x', 0).attr('y', 280)
       .attr('width', 0).attr('height', '20');
     // UPDATE
-    placeBoxes.transition().duration(1000)
+    placeBoxes.transition().duration(DURATION)
       .attr('x', function(d) {
         return tScale(new Date(d.start));
       })
@@ -64,7 +66,7 @@ export default React.createClass({
       .attr('x', 0).attr('y', 296);
 
     // UPDATE
-    placeNames.transition().duration(1000)
+    placeNames.transition().duration(DURATION)
       .attr('x', function(d) {
         return (tScale(new Date(d.end)) + tScale(new Date(d.start))) / 2;
       })
@@ -86,7 +88,7 @@ export default React.createClass({
       .attr('height', 1);
 
     // UPDATE
-    occupationWidths.transition().duration(1000)
+    occupationWidths.transition().duration(DURATION)
       .attr('x', function(d) {
         return tScale(new Date(d.start));
       })
@@ -99,7 +101,7 @@ export default React.createClass({
     ['start', 'end'].forEach(function(key) {
       const occupationHeights = g.selectAll(`rect.occupation-heights-${key}`).data(Data.occupationData);
       // ENTER
-      occupationHeights.enter().append('rect').attr('class', `occupation-widths-${key}`)
+      occupationHeights.enter().append('rect').attr('class', `occupation-heights-${key}`)
       .attr('fill', '#333')
       .attr('stroke', 'no-stroke')
       .attr('y', 315)
@@ -107,7 +109,7 @@ export default React.createClass({
       .attr('width', 1)
 
       // UPDATE
-      occupationHeights.transition().duration(1000)
+      occupationHeights.transition().duration(DURATION)
       .attr('x', function(d) {
         return tScale(new Date(d[key]));
       });
@@ -123,7 +125,7 @@ export default React.createClass({
       .style('left', '100px').style('top', '383px');
 
     // UPDATE
-    occupationContent.transition().duration(1000)
+    occupationContent.transition().duration(DURATION)
       .style('left', function(d) {
         const avg =  (tScale(new Date(d.end)) + tScale(new Date(d.start)) ) / 2;
         return (avg - props.margin.left - 55) + 'px';
@@ -143,7 +145,7 @@ export default React.createClass({
       .style('left', '100px').style('top', '380px');
 
     // UPDATE
-    occupationIcon.transition().duration(1000)
+    occupationIcon.transition().duration(DURATION)
       .style('left', function(d) {
         const avg =  (tScale(new Date(d.end)) + tScale(new Date(d.start)) ) / 2;
         return (avg - props.margin.left - 10) + 'px';
@@ -151,9 +153,6 @@ export default React.createClass({
       .attr('src', function(d){
         return d.img;
       });
-      // .text(function(d) {
-      //   return d.job;
-      // });
     // EXIT
     occupationIcon.exit().remove();
   },
@@ -171,7 +170,7 @@ export default React.createClass({
       .tickPadding(0);
 
     g.select('.x.axis')
-      .transition().duration(1000)
+      .transition().duration(DURATION)
       .attr('transform', 'translate(0, 250)')
       .call(tAxis);
   },
@@ -186,7 +185,7 @@ export default React.createClass({
       .attr('fill-opacity', 0.5);
 
     // UPDATE
-    relationshipBoxes.transition().duration(1000)
+    relationshipBoxes.transition().duration(DURATION)
       .attr('x', function(d) {
         return tScale(new Date(d.start));
       })
@@ -206,7 +205,7 @@ export default React.createClass({
       .attr('x', 0).attr('y', 280);
 
     // UPDATE
-    relationshipTitle.transition().duration(1000)
+    relationshipTitle.transition().duration(DURATION)
       .attr('x', function(d) {
         return tScale(tScale.domain()[1]);
       })
@@ -227,7 +226,7 @@ export default React.createClass({
       .style('left', '0px').style('top', '296px');
 
     // UPDATE
-    eventContent.transition().duration(1000)
+    eventContent.transition().duration(DURATION)
       .style('left', function(d) {
         return (tScale(new Date(d.time)) + props.margin.left - 60) + 'px';
       })
@@ -250,7 +249,7 @@ export default React.createClass({
       .attr('stroke', '#979797');
 
     // UPDATE
-    eventLines.transition().duration(1000)
+    eventLines.transition().duration(DURATION)
       .attr('x1', function(d) {
         return tScale(new Date(d.time)) + 5;
       })
