@@ -1,4 +1,4 @@
-$text-color: #333;
+$text-color: #555;
 $white: #fff;
 
 body,
@@ -10,10 +10,10 @@ html,
 }
 
 .app {
-  top: 30%;
   padding-left: 50px;
   padding-right: 50px;
   position: relative;
+  top: 30%;
 }
 
 .x.axis {
@@ -81,14 +81,12 @@ html,
 }
 
 .occupation-content {
-  // background-color: rgba($white, .5);
   color: $text-color;
   font-family: GillSans-LightItalic;
   font-size: 18px;
   line-height: 17px;
   position: absolute;
   text-align: left;
-  // transform: rotate(90deg);
   width: 120px;
 }
 

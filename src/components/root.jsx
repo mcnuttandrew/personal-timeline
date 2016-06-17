@@ -22,6 +22,7 @@ export default React.createClass({
 
     this.setState({
       graphWidth: Math.max(containerWidth * 0.8, 1200),
+      tooSmall: (containerWidth < 450),
       deboundResizer: debounceResizer
     });
   },
@@ -32,11 +33,23 @@ export default React.createClass({
     }
     var containerWidth = ReactDOM.findDOMNode(this).clientWidth;
     this.setState({
-      graphWidth: Math.max(containerWidth * 0.8, 1200)
+      graphWidth: Math.max(containerWidth * 0.8, 1200),
+      tooSmall: (containerWidth < 450),
     });
   },
 
+
   render() {
+    if (this.state.tooSmall) {
+      return (
+        <div className="app">
+          <div className='timeline-title short-message'>
+            The page you are attempting to view has not been design to fit on your device
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="app">
         <Chart
