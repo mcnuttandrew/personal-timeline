@@ -58,9 +58,9 @@ export default React.createClass({
     var placeNames = g.selectAll('text.place-name').data(Data.locationData);
     // ENTER
     placeNames.enter().append('svg:text').attr('class', 'place-name')
-      .attr('font-family', 'HighwayGothicCondensed, Highway Gothic Condensed')
-      .attr('font-size', 20)
-      .attr('font-style', 'condensed')
+      .attr('font-family', 'Overpass')
+      .attr('font-size', 14)
+      .attr('font-weight', 'bold')
       .attr('text-anchor', 'middle')
       .attr('fill', '#333')
       .attr('x', 0).attr('y', 296);
