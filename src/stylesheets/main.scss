@@ -96,3 +96,20 @@ html,
   position: absolute;
   width: 20px;
 }
+
+.place-name,
+.occupation-heights-start,
+.occupation-heights-end,
+.occupation-widths {
+  fill: #333;
+}
+
+
+.relationship {
+  fill: #D0021B;
+  fill-opacity: .5;
+}
+
+.event-line {
+  stroke: #979797
+}

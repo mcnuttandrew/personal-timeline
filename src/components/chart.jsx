@@ -19,12 +19,12 @@ export default React.createClass({
   },
 
   _updateChart: function _updateChart(props) {
-    var plotWidth = props.width - props.margin.left - props.margin.right;
-    var plotHeight = props.height - props.margin.top - props.margin.bottom;
-    var timeDomain = [new Date(Data.locationData[0].start), new Date(Data.locationData[2].end)];
-    var tScale = d3.time.scale().domain(timeDomain).range([0, plotWidth]);
+    const plotWidth = props.width - props.margin.left - props.margin.right;
+    const plotHeight = props.height - props.margin.top - props.margin.bottom;
+    const timeDomain = [new Date(Data.locationData[0].start), new Date(Data.locationData[2].end)];
+    const tScale = d3.time.scale().domain(timeDomain).range([0, plotWidth]);
 
-    var g = d3.select(ReactDOM.findDOMNode(this.refs['plot-container']));
+    const g = d3.select(ReactDOM.findDOMNode(this.refs['plot-container']));
 
     this.renderPlaceBoxes(g, tScale);
     this.renderOccupationWidths(g, tScale, props);
@@ -35,44 +35,35 @@ export default React.createClass({
 
   renderPlaceBoxes: function renderPlaceBoxes(g, tScale) {
     // JOIN
-    var placeBoxes = g.selectAll('rect.place').data(Data.locationData);
+    const placeBoxes = g.selectAll('rect.place').data(Data.locationData);
     // ENTER
     placeBoxes.enter().append('rect').attr('class', 'place')
       .attr('x', 0).attr('y', 280)
-      .attr('width', 0).attr('height', '20');
+      .attr('width', 0)
+      .attr('height', '20');
+
     // UPDATE
     placeBoxes.transition().duration(DURATION)
-      .attr('x', function(d) {
-        return tScale(new Date(d.start));
-      })
-      .attr('width', function(d) {
-        return tScale(new Date(d.end)) - tScale(new Date(d.start));
-      })
-      .attr('fill', function(d) {
-        return d.color;
-      });
+      .attr('x', d => tScale(new Date(d.start)))
+      .attr('width', d => tScale(new Date(d.end)) - tScale(new Date(d.start)))
+      .attr('fill', d => d.color);
     // EXIT
     placeBoxes.exit().remove();
 
     // JOIN
-    var placeNames = g.selectAll('text.place-name').data(Data.locationData);
+    const placeNames = g.selectAll('text.place-name').data(Data.locationData);
     // ENTER
     placeNames.enter().append('svg:text').attr('class', 'place-name')
       .attr('font-family', 'Overpass')
       .attr('font-size', 14)
       .attr('font-weight', 'bold')
       .attr('text-anchor', 'middle')
-      .attr('fill', '#333')
       .attr('x', 0).attr('y', 296);
 
     // UPDATE
     placeNames.transition().duration(DURATION)
-      .attr('x', function(d) {
-        return (tScale(new Date(d.end)) + tScale(new Date(d.start))) / 2;
-      })
-      .text(function(d) {
-        return d.place;
-      });
+      .attr('x', d => (tScale(new Date(d.end)) + tScale(new Date(d.start))) / 2)
+      .text(d => d.place);
     // EXIT
     placeNames.exit().remove();
   },
@@ -82,19 +73,14 @@ export default React.createClass({
     const occupationWidths = g.selectAll('rect.occupation-widths').data(Data.occupationData);
     // ENTER
     occupationWidths.enter().append('rect').attr('class', 'occupation-widths')
-      .attr('fill', '#333')
       .attr('stroke', 'no-stroke')
       .attr('y', 320)
       .attr('height', 1);
 
     // UPDATE
     occupationWidths.transition().duration(DURATION)
-      .attr('x', function(d) {
-        return tScale(new Date(d.start));
-      })
-      .attr('width', function(d) {
-        return tScale(new Date(d.end)) - tScale(new Date(d.start));
-      });
+      .attr('x', d => tScale(new Date(d.start)))
+      .attr('width', d => tScale(new Date(d.end)) - tScale(new Date(d.start)));
     // EXIT
     occupationWidths.exit().remove();
 
@@ -102,27 +88,26 @@ export default React.createClass({
       const occupationHeights = g.selectAll(`rect.occupation-heights-${key}`).data(Data.occupationData);
       // ENTER
       occupationHeights.enter().append('rect').attr('class', `occupation-heights-${key}`)
-      .attr('fill', '#333')
       .attr('stroke', 'no-stroke')
       .attr('y', 315)
       .attr('height', 10)
-      .attr('width', 1)
+      .attr('width', 1);
 
       // UPDATE
       occupationHeights.transition().duration(DURATION)
-      .attr('x', function(d) {
-        return tScale(new Date(d[key]));
-      });
+      .attr('x', d => tScale(new Date(d[key])));
       // EXIT
       occupationHeights.exit().remove();
-    })
+    });
 
-    var div = d3.select(ReactDOM.findDOMNode(this.refs.overlay));
+    const div = d3.select(ReactDOM.findDOMNode(this.refs.overlay));
     // JOIN
-    var occupationContent = div.selectAll('span.occupation-content').data(Data.occupationData);
+    const occupationContent = div.selectAll('span.occupation-content').data(Data.occupationData);
     // ENTER
-    occupationContent.enter().append('span').attr('class', 'occupation-content')
-      .style('left', '100px').style('top', '383px');
+    occupationContent.enter().append('span')
+      .attr('class', 'occupation-content')
+      .style('left', '100px')
+      .style('top', '383px');
 
     // UPDATE
     occupationContent.transition().duration(DURATION)
@@ -130,14 +115,12 @@ export default React.createClass({
         const avg =  (tScale(new Date(d.end)) + tScale(new Date(d.start)) ) / 2;
         return (avg - props.margin.left - 55) + 'px';
       })
-      .text(function(d) {
-        return d.job;
-      });
+      .text(d => d.job);
     // EXIT
     occupationContent.exit().remove();
 
     // JOIN
-    var occupationIcon = div.selectAll('img.occupation-icon').data(Data.occupationData.filter(function(d) {
+    const occupationIcon = div.selectAll('img.occupation-icon').data(Data.occupationData.filter(function(d) {
       return d.img;
     }));
     // ENTER
@@ -150,23 +133,18 @@ export default React.createClass({
         const avg =  (tScale(new Date(d.end)) + tScale(new Date(d.start)) ) / 2;
         return (avg - props.margin.left - 10) + 'px';
       })
-      .attr('src', function(d){
-        return d.img;
-      });
+      .attr('src', d => d.img);
     // EXIT
     occupationIcon.exit().remove();
   },
 
   renderAxis: function renderAxis(g, tScale) {
-    var tAxis = d3.svg.axis()
+    const tAxis = d3.svg.axis()
       .scale(tScale)
-      .tickFormat(function formatTick(d) {
-        var date = new Date(d);
-        return (date.getUTCFullYear() - 1992) % 10;
-      })
+      .tickFormat(d => ((new Date(d)).getUTCFullYear() - 1992) % 10)
       .ticks(d3.time.day, 2)
       .tickSize(0)
-      .ticks(26)
+      .ticks(27)
       .tickPadding(0);
 
     g.select('.x.axis')
@@ -177,88 +155,66 @@ export default React.createClass({
 
   renderRelationships: function renderRelationships(g, tScale) {
     // JOIN
-    var relationshipBoxes = g.selectAll('rect.relationship').data(Data.relationshipData);
+    const relationshipBoxes = g.selectAll('rect.relationship').data(Data.relationshipData);
     // ENTER
     relationshipBoxes.enter().append('rect').attr('class', 'relationship')
-      .attr('x', 0).attr('y', 270).attr('width', 0).attr('height', 10)
-      .attr('fill', '#D0021B')
-      .attr('fill-opacity', 0.5);
+      .attr('x', 0)
+      .attr('y', 270)
+      .attr('width', 0)
+      .attr('height', 10);
 
     // UPDATE
     relationshipBoxes.transition().duration(DURATION)
-      .attr('x', function(d) {
-        return tScale(new Date(d.start));
-      })
-      .attr('y', function(d) {
-        return 270 - d.offset * 5;
-      })
-      .attr('width', function(d) {
-        return tScale(new Date(d.end)) - tScale(new Date(d.start));
-      });
+      .attr('x', d => tScale(new Date(d.start)))
+      .attr('y', d => 270 - d.offset * 5)
+      .attr('width', d => tScale(new Date(d.end)) - tScale(new Date(d.start)));
     // EXIT
     relationshipBoxes.exit().remove();
 
     // JOIN
-    var relationshipTitle = g.selectAll('text.relationships-title').data(['{relationships by length}']);
+    const relationshipTitle = g.selectAll('text.relationships-title').data(['{relationships by length}']);
     // ENTER
     relationshipTitle.enter().append('svg:text').attr('class', 'relationships-title')
-      .attr('x', 0).attr('y', 280);
+      .attr('x', 0)
+      .attr('y', 280);
 
     // UPDATE
     relationshipTitle.transition().duration(DURATION)
-      .attr('x', function(d) {
-        return tScale(tScale.domain()[1]);
-      })
-      .text(function(d) {
-        return d;
-      });
+      .attr('x', d => tScale(tScale.domain()[1]))
+      .text(d => d);
     // EXIT
     relationshipTitle.exit().remove();
   },
 
   renderEvents: function renderEvents(g, tScale, plotHeight, props) {
-    var yScale = d3.scale.linear().domain([0, 10]).range([plotHeight, 0]);
-    var div = d3.select(ReactDOM.findDOMNode(this.refs.overlay));
+    const yScale = d3.scale.linear().domain([0, 10]).range([plotHeight, 0]);
+    const div = d3.select(ReactDOM.findDOMNode(this.refs.overlay));
     // JOIN
-    var eventContent = div.selectAll('span.event-content').data(Data.eventsData);
+    const eventContent = div.selectAll('span.event-content').data(Data.eventsData);
     // ENTER
-    eventContent.enter().append('span').attr('class', 'event-content')
-      .style('left', '0px').style('top', '296px');
+    eventContent.enter().append('span').attr('class', 'event-content');
 
     // UPDATE
     eventContent.transition().duration(DURATION)
-      .style('left', function(d) {
-        return (tScale(new Date(d.time)) + props.margin.left - 60) + 'px';
-      })
-      .style('top', function(d) {
-        return (yScale(d.height) + props.margin.top - 18 * d.text.length / 16 - 10) + 'px';
-      })
-      .text(function(d) {
-        return d.text;
-      });
+      .style('left', d => `${tScale(new Date(d.time)) + props.margin.left - 60}px`)
+      .style('top', d => `${yScale(d.height) + props.margin.top - 18 * d.text.length / 16 - 10}px`)
+      .text(d => d.text);
     // EXIT
     eventContent.exit().remove();
 
     // JOIN
-    var eventLines = g.selectAll('line.event-line').data(Data.eventsData);
+    const eventLines = g.selectAll('line.event-line').data(Data.eventsData);
     // ENTER
     eventLines.enter().append('line').attr('class', 'event-line')
       .attr('x1', 0).attr('y1', 250)
       .attr('x2', 0).attr('y2', 250)
-      .attr('stroke-width', 1)
-      .attr('stroke', '#979797');
+      .attr('stroke-width', 1);
 
     // UPDATE
     eventLines.transition().duration(DURATION)
-      .attr('x1', function(d) {
-        return tScale(new Date(d.time)) + 5;
-      })
-      .attr('x2', function(d) {
-        return tScale(new Date(d.time)) + 5;
-      })
-      .attr('y2', function(d) {
-        return yScale(d.height);
-      });
+      .attr('x1', d => tScale(new Date(d.time)) + 5)
+      .attr('x2', d => tScale(new Date(d.time)) + 5)
+      .attr('y2', d => yScale(d.height));
     // EXIT
     eventLines.exit().remove();
   },

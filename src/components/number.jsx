@@ -4,9 +4,11 @@ import Data from '../constants';
 export default React.createClass({
   displayName : 'NumbersSection',
 
-  renderNumbers(number) {
+  renderNumbers(number, index) {
     return (
-      <div className='number-wrapper'>
+      <div
+        className='number-wrapper'
+        key={`number-${index}`}>
         <div className='number-value'> {number.value} </div>
         <div className='number-title'> {number.title} </div>
       </div>
