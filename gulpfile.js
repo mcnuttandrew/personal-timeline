@@ -37,7 +37,7 @@ gulp.task('js', function() {
         drop_debugger : true,
         drop_console  : true
       }
-    })
+    });
   }
 
   bundler.bundle().on('error', function(err) {
