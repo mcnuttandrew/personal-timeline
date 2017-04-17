@@ -5,7 +5,7 @@ export default {
     {job: 'REED', start: '2010-08-23', end: '2014-05-23', img: 'https://www.pcc.edu/programs/university-transfer/images/reed.png'},
     {job: '', start: '2014-08-02', end: '2014-10-15', img: 'http://haseebq.com/wordpress/wp-content/uploads/2015/05/aa.png'},
     {job: '', start: '2014-10-15', end: '2015-10-23', img: 'https://avatars3.githubusercontent.com/u/16300?v=3&s=200'},
-    {job: '', start: '2015-10-23', end: curretDate, img: 'https://lh3.googleusercontent.com/aMoTzec746RIY9GFOKMjipqBShsKos_KxeDtS59tRp4-ePCpGqW2bS-ySyUEL6q3gkA=w300'}
+    {job: '', start: '2015-10-23', end: '2017-04-14', img: 'https://lh3.googleusercontent.com/aMoTzec746RIY9GFOKMjipqBShsKos_KxeDtS59tRp4-ePCpGqW2bS-ySyUEL6q3gkA=w300'}
   ],
 
   locationData: [
