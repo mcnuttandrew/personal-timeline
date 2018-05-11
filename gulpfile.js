@@ -13,11 +13,6 @@ var paths = {
   js: ['src/**/*.js*'],
 };
 
-gulp.task('css', function() {
-  return gulp.src(paths.main_css)
-    .pipe(gulp.dest('dist/'));
-});
-
 gulp.task('js', function() {
   var bundler = browserify(paths.main_js)
                 .transform('babelify', {
@@ -40,8 +35,10 @@ gulp.task('js', function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('serve', ['css', 'js'], function () {
-  gulp.watch(paths.css, ['css']);
+gulp.task('serve', ['js'], function () {
+  gulp.watch(['src/stylesheets/*.css', 'index.html'], function (file) {
+    server.notify.apply(server, [file]);
+  });
   gulp.watch(paths.js,  ['js']);
 
   // Start the app server.
@@ -59,4 +56,4 @@ gulp.task('serve', ['css', 'js'], function () {
   });
 });
 
-gulp.task('default', [ 'css', 'js']);
+gulp.task('default', ['js']);

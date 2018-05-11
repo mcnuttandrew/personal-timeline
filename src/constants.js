@@ -7,31 +7,31 @@ export default {
     }, {job: 'REED',
       start: '2010-08-23',
       end: '2014-05-23',
-      img: 'https://github.com/mcnuttandrew/personal-timeline/assets/reed.png'
+      img: 'https://raw.githubusercontent.com/mcnuttandrew/personal-timeline/master/assets/reed.png'
     }, {
       unseenName: 'A/a',
       job: '',
       start: '2014-08-02',
       end: '2014-10-15',
-      img: 'https://github.com/mcnuttandrew/personal-timeline/assets/app-academy.png'
+      img: 'https://raw.githubusercontent.com/mcnuttandrew/personal-timeline/master/assets/app-academy.png'
     }, {
       unseenName: 'CDD',
       job: '',
       start: '2014-10-15',
       end: '2015-10-23',
-      img: 'https://github.com/mcnuttandrew/personal-timeline/assets/cdd.jpg'
+      img: 'https://raw.githubusercontent.com/mcnuttandrew/personal-timeline/master/assets/cdd.jpg'
     }, {
       unseenName: 'UBER',
       job: '',
       start: '2015-10-23',
       end: '2017-04-14',
-      img: 'https://github.com/mcnuttandrew/personal-timeline/assets/uber.jpg'
+      img: 'https://raw.githubusercontent.com/mcnuttandrew/personal-timeline/master/assets/uber.jpg'
     }, {
       unseenName: 'UCHICAGO',
       job: '',
       start: '2017-09-01',
       end: curretDate,
-      img: 'https://github.com/mcnuttandrew/personal-timeline/assets/uchicago.png'
+      img: 'https://raw.githubusercontent.com/mcnuttandrew/personal-timeline/master/assets/uchicago.png'
     }
   ],
 

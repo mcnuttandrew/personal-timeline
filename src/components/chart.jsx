@@ -176,11 +176,11 @@ export default React.createClass({
     // ENTER
     relationshipTitle.enter().append('svg:text').attr('class', 'relationships-title')
       .attr('x', 0)
-      .attr('y', 280);
+      .attr('y', 230);
 
     // UPDATE
     relationshipTitle.transition().duration(DURATION)
-      .attr('x', d => tScale(tScale.domain()[1]))
+      .attr('x', d => tScale(tScale.domain()[1]) - 20)
       .text(d => d);
     // EXIT
     relationshipTitle.exit().remove();
