@@ -26,6 +26,7 @@
     "react-router": "^2.4.0"
   },
   "scripts": {
-    "watch": "gulp serve"
+    "watch": "gulp serve",
+    "build": "gulp"
   }
 }
