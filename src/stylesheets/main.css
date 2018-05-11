@@ -1,6 +1,3 @@
-$text-color: #555;
-$white: #fff;
-
 body,
 html,
 #app {
@@ -18,7 +15,7 @@ html,
 }
 
 .x.axis {
-  color: $text-color;
+  color: #555;
   font-family: GillSans-LightItalic;
   font-size: 20px;
   letter-spacing: 20px;
@@ -34,13 +31,13 @@ html,
 }
 
 .timeline-title {
-  color: $text-color;
+  color: #555;
   font-family: GillSans;
   font-size: 30.12px;
 }
 
 .timeline-subtitle {
-  color: $text-color;
+  color: #555;
   font-family: GillSans-Light;
   font-size: 14px;
   position: relative;
@@ -53,26 +50,26 @@ html,
 }
 
 .number-value {
-  color: $text-color;
+  color: #555;
   font-family: GillSans;
   font-size: 40px;
 }
 
 .number-title {
-  color: $text-color;
+  color: #555;
   font-family: GillSans-Light;
   font-size: 20px;
 }
 
 .relationships-title {
-  fill: $text-color;
+  fill: #555;
   font-family: GillSans-LightItalic;
   font-size: 20px;
 }
 
 .event-content {
-  background-color: rgba($white, .5);
-  color: $text-color;
+  background-color: rgba(#fff, .5);
+  color: #555;
   font-family: GillSans-LightItalic;
   font-size: 18px;
   line-height: 17px;
@@ -82,7 +79,7 @@ html,
 }
 
 .occupation-content {
-  color: $text-color;
+  color: #555;
   font-family: GillSans-LightItalic;
   font-size: 18px;
   line-height: 17px;

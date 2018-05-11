@@ -12,7 +12,7 @@ export default React.createClass({
         <div className='number-value'> {number.value} </div>
         <div className='number-title'> {number.title} </div>
       </div>
-    )
+    );
   },
 
   render() {

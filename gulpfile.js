@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var gls = require('gulp-live-server');
-var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
 var browserify = require('browserify');
 var minifyify = require('minifyify');
@@ -8,19 +7,14 @@ var babelify = require('babelify');
 var IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 var paths = {
-  main_css: ['src/stylesheets/main.scss'],
-  css: ['src/stylesheets/**/*.scss'],
+  main_css: ['src/stylesheets/main.css'],
+  css: ['src/stylesheets/**/*.css'],
   main_js: ['src/app.js'],
   js: ['src/**/*.js*'],
 };
 
 gulp.task('css', function() {
   return gulp.src(paths.main_css)
-    .pipe(
-      sass({
-        outputStyle: IS_PRODUCTION ? 'compressed' : 'nested'
-      }).on('error', sass.logError)
-    )
     .pipe(gulp.dest('dist/'));
 });
 
