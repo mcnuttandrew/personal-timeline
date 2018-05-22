@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import debounce from 'lodash.debounce';
 
-import ReactGA from 'react-ga';
-
 import Chart from './chart.jsx';
 import Numbers from './number.jsx';
 
@@ -21,11 +19,6 @@ export default React.createClass({
     const debounceResizer = debounce(this._resize, 0);
 
     window.addEventListener('resize', debounceResizer);
-
-    ReactGA.event({
-      category: 'TIMELINE',
-      action: 'Page was loaded'
-    });
 
     this.setState({
       graphWidth: Math.max(containerWidth * 0.8, 1200),
