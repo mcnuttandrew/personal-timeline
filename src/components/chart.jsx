@@ -28,7 +28,7 @@ export default React.createClass({
 
     this.renderPlaceBoxes(g, tScale);
     this.renderOccupationWidths(g, tScale, props);
-    this.renderRelationships(g, tScale);
+    // this.renderRelationships(g, tScale);
     this.renderAxis(g, tScale);
     this.renderEvents(g, tScale, plotHeight, props);
   },
