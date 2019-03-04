@@ -21,7 +21,10 @@ export default React.createClass({
   _updateChart: function _updateChart(props) {
     const plotWidth = props.width - props.margin.left - props.margin.right;
     const plotHeight = props.height - props.margin.top - props.margin.bottom;
-    const timeDomain = [new Date(Data.locationData[0].start), new Date(Data.locationData[2].end)];
+    const timeDomain = [
+      new Date(Data.locationData[0].start),
+      new Date(Data.locationData[Data.locationData.length - 1].end)
+    ];
     const tScale = d3.time.scale().domain(timeDomain).range([0, plotWidth]);
 
     const g = d3.select(ReactDOM.findDOMNode(this.refs['plot-container']));
@@ -144,7 +147,7 @@ export default React.createClass({
       .tickFormat(d => ((new Date(d)).getUTCFullYear() - 1992) % 10)
       .ticks(d3.time.day, 2)
       .tickSize(0)
-      .ticks(27)
+      .ticks(29)
       .tickPadding(0);
 
     g.select('.x.axis')
