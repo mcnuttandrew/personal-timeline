@@ -55,7 +55,7 @@ export default {
     {text: 'Broke my arm', time: '1994-09-22', height: 5},
     {text: 'Caught a fish', time: '1997-08-10', height: 8},
     {text: 'Learned to read by playing pokemon', time: '1999-09-10', height: 4.5},
-    // {text: 'Saw my first concert (modest mouse)', time: '1999-09-02', height: 8},
+    {text: 'Saw my first concert (modest mouse)', time: '1999-09-02', height: 8},
     {text: 'Learned to program a TI83', time: '2005-09-030', height: 7.5},
     {text: 'Quit trying to be good at chess', time: '2005-04-10', height: 10},
     {text: 'Found a pair \n of sunglasses in rural China', time: '2007-04-22', height: 5.5},
@@ -66,8 +66,8 @@ export default {
 
   numbersData: [
     {value: '11', title: 'places lived'},
-    {value: '30?', title: 'states visted'},
-    {value: '7', title: 'countries visted'},
+    {value: '30?', title: 'states visited'},
+    {value: '7', title: 'countries visited'},
     {value: '8', title: 'jobs held'},
     {value: '74', title: 'inches grown'}
   ]
